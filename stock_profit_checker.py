@@ -16,4 +16,3 @@ elif amtback == amtinvested:
     print('You broke even')
 else:
     print('Your trade resulted in a profit of $'+ str(amtback-amtinvested) + '. Congratulations!')
-
