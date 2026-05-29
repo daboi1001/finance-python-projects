@@ -1,0 +1,25 @@
+#from bs4 import BeautifulSoup
+import re
+import urllib.request
+numbers=[]
+final = 0
+#, urllib.parse, urllib.error
+url = "http://py4e-data.dr-chuck.net/comments_2345903.html"
+fhand = urllib.request.urlopen(url)
+#html = urllib.request.urlopen(url).read()
+#soup = BeautifulSoup(html, 'html.parser')
+#print(soup)
+for line in fhand:
+    decoded = line.decode().strip()
+    print(decoded)
+    if decoded.startswith("<tr><td>"):
+        linevalue = re.findall('^<tr>.+comments">([0-9]+)', decoded)
+        print(linevalue)
+        numbers.append(linevalue)
+
+print(numbers)
+
+for number in numbers:
+    integer = int(number[0])
+    final = final + integer
+print(final)
